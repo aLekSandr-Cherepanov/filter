@@ -13,7 +13,8 @@ function app() {
 
     button.forEach((button) => {
         button.addEventListener('click', () => {
-            console.log(button.dataset.filter)
+            const currentCategory = button.dataset.filter;
+            filter(currentCategory, cards)
         })
     });
 }

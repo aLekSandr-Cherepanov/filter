@@ -100,3 +100,7 @@
   .bird {
     background-color: var(--color-blue);
   }
+
+  .hide {
+    display: none;
+  }
