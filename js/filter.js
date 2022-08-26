@@ -5,8 +5,12 @@ function app() {
     function filter (category, items) {
         items.forEach((item) => {
             const isItemFiltered = !item.classList.contains(category)
-            if (isItemFiltered) {
-                item.classList.add('hide')
+            const isShowAll = category.toLowerCase() === 'all'
+            if (isItemFiltered && !isShowAll) {
+                item.classList.add('anime')
+            } else {
+                item.classList.remove('hide')
+                item.classList.remove('anime')
             }
         })
     }
@@ -17,6 +21,14 @@ function app() {
             filter(currentCategory, cards)
         })
     });
+
+    cards.forEach((card) => {
+        card.ontransitionend = function () {
+            if (card.classList.contains('anime')) {
+                card.classList.add('hide')
+            }
+        }
+    })
 }
 
 app()
